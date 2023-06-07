@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:memorify/features/main_menu/presentation/pages/main_menu_screen.dart';
+import 'package:memorify/features/tutorial/presentation/pages/tutorial_screen.dart';
 
 part 'router.gr.dart';
 
@@ -7,6 +8,11 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(page: MainMenuRoute.page, path: '/'),
-  ];
+        AutoRoute(page: MainMenuRoute.page, path: '/'),
+        CustomRoute(
+          page: TutorialRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 150,
+        ),
+      ];
 }

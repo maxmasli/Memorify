@@ -11,6 +11,14 @@ ThemeData createLightTheme() {
     useMaterial3: true,
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontSize: 36),
+      bodySmall: TextStyle(fontSize: 18),
+    ),
+    appBarTheme: AppBarTheme(
+      color: AppColors.pink,
+    ),
+    tabBarTheme: TabBarTheme(
+      indicatorColor: AppColors.darkPink,
+      labelColor: Colors.black,
     ),
   );
 }

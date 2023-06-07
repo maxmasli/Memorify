@@ -6,7 +6,7 @@ import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 void main() {
-  setup();
+  initDI();
 
   Bloc.observer = TalkerBlocObserver(talker: getIt<Talker>());
 
