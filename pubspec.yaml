@@ -17,7 +17,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   get_it: ^7.6.0
-  injectable: ^2.1.2
   intl: ^0.18.0
   talker: ^3.0.0+1
   talker_bloc_logger: ^2.0.0
@@ -29,7 +28,6 @@ dev_dependencies:
 #  flutter_test:
 #    sdk: flutter
   build_runner:
-  injectable_generator: ^2.1.6
   mocktail: ^0.3.0
   test: ^1.24.3
   very_good_analysis: ^5.0.0+1
@@ -37,3 +35,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+

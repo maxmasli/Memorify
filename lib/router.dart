@@ -5,7 +5,6 @@ part 'router.gr.dart';
 
 @AutoRouterConfig()
 class AppRouter extends _$AppRouter {
-
   @override
   List<AutoRoute> get routes => [
     AutoRoute(page: MainMenuRoute.page, path: '/'),
