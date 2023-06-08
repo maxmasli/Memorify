@@ -56,7 +56,11 @@ class Body extends StatelessWidget {
                   AppButtonWidget(
                     text: AppStrings.start,
                     onPressed: () {
-                      context.router.push(const MemoryGameRoute());
+                      context.router.push(
+                        MemoryGameRoute(
+                          memoPropertiesEntity: state.memoPropertiesEntity,
+                        ),
+                      );
                     },
                   ),
                   const SizedBox(height: 24),

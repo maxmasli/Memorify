@@ -22,9 +22,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MemoryGameRoute.name: (routeData) {
+      final args = routeData.argsAs<MemoryGameRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MemoryGameScreen(),
+        child: MemoryGameScreen(
+          memoPropertiesEntity: args.memoPropertiesEntity,
+          key: args.key,
+        ),
       );
     },
     RatingMenuRoute.name: (routeData) {
@@ -37,6 +41,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const TutorialScreen(),
+      );
+    },
+    MemoryCheckRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MemoryCheckScreen(),
       );
     },
   };
@@ -58,16 +68,40 @@ class MainMenuRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MemoryGameScreen]
-class MemoryGameRoute extends PageRouteInfo<void> {
-  const MemoryGameRoute({List<PageRouteInfo>? children})
-      : super(
+class MemoryGameRoute extends PageRouteInfo<MemoryGameRouteArgs> {
+  MemoryGameRoute({
+    required MemoPropertiesEntity memoPropertiesEntity,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           MemoryGameRoute.name,
+          args: MemoryGameRouteArgs(
+            memoPropertiesEntity: memoPropertiesEntity,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'MemoryGameRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<MemoryGameRouteArgs> page =
+      PageInfo<MemoryGameRouteArgs>(name);
+}
+
+class MemoryGameRouteArgs {
+  const MemoryGameRouteArgs({
+    required this.memoPropertiesEntity,
+    this.key,
+  });
+
+  final MemoPropertiesEntity memoPropertiesEntity;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MemoryGameRouteArgs{memoPropertiesEntity: $memoPropertiesEntity, key: $key}';
+  }
 }
 
 /// generated route for
@@ -94,6 +128,20 @@ class TutorialRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TutorialRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MemoryCheckScreen]
+class MemoryCheckRoute extends PageRouteInfo<void> {
+  const MemoryCheckRoute({List<PageRouteInfo>? children})
+      : super(
+          MemoryCheckRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MemoryCheckRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
