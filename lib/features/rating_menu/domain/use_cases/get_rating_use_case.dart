@@ -8,7 +8,7 @@ import 'package:memorify/core/use_case/use_case.dart';
 final class GetRatingUseCase extends UseCase<RatingEntity, NoParams> {
   GetRatingUseCase({required this.ratingRepository});
 
-  final RatingRepository ratingRepository;
+  final GetRatingRepository ratingRepository;
 
   @override
   Future<Either<Failure, RatingEntity>> call(NoParams params) {

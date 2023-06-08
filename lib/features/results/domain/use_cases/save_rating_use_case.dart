@@ -8,7 +8,7 @@ final class SaveRatingUseCase extends UseCase<void, RatingParams> {
 
   SaveRatingUseCase({required this.ratingRepository});
 
-  final RatingRepository ratingRepository;
+  final SaveRatingRepository ratingRepository;
 
   @override
   Future<Either<Failure, void>> call(RatingParams params) {

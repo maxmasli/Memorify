@@ -19,6 +19,9 @@ ThemeData createLightTheme() {
     tabBarTheme: TabBarTheme(
       indicatorColor: AppColors.darkPink,
       labelColor: Colors.black,
+      overlayColor: MaterialStateProperty.all<Color>(
+        AppColors.darkPink.withAlpha(100),
+      ),
     ),
   );
 }

@@ -26,16 +26,22 @@ class Body extends StatelessWidget {
             ),
           ),
         ),
-        SingleChildScrollView(
-          child: Text(
-            AppStrings.matryoshkaText,
-            style: Theme.of(context).textTheme.bodySmall,
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: SingleChildScrollView(
+            child: Text(
+              AppStrings.matryoshkaText,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
           ),
         ),
-        SingleChildScrollView(
-          child: Text(
-            AppStrings.cicerosMethodText,
-            style: Theme.of(context).textTheme.bodySmall,
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: SingleChildScrollView(
+            child: Text(
+              AppStrings.cicerosMethodText,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
           ),
         ),
       ],

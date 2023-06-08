@@ -5,6 +5,7 @@ import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/rating_menu/presentation/bloc/rating_menu_bloc.dart';
+import 'package:memorify/router.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -54,7 +55,9 @@ class Body extends StatelessWidget {
                   const SizedBox(height: 24),
                   AppButtonWidget(
                     text: AppStrings.start,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.push(const MemoryGameRoute());
+                    },
                   ),
                   const SizedBox(height: 24),
                 ],

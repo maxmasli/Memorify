@@ -21,16 +21,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MainMenuScreen(),
       );
     },
-    TutorialRoute.name: (routeData) {
+    MemoryGameRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TutorialScreen(),
+        child: const MemoryGameScreen(),
       );
     },
     RatingMenuRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const RatingMenuScreen(),
+      );
+    },
+    TutorialRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TutorialScreen(),
       );
     },
   };
@@ -51,15 +57,15 @@ class MainMenuRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TutorialScreen]
-class TutorialRoute extends PageRouteInfo<void> {
-  const TutorialRoute({List<PageRouteInfo>? children})
+/// [MemoryGameScreen]
+class MemoryGameRoute extends PageRouteInfo<void> {
+  const MemoryGameRoute({List<PageRouteInfo>? children})
       : super(
-          TutorialRoute.name,
+          MemoryGameRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'TutorialRoute';
+  static const String name = 'MemoryGameRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -74,6 +80,20 @@ class RatingMenuRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RatingMenuRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TutorialScreen]
+class TutorialRoute extends PageRouteInfo<void> {
+  const TutorialRoute({List<PageRouteInfo>? children})
+      : super(
+          TutorialRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TutorialRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

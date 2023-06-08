@@ -6,7 +6,7 @@ import 'package:memorify/features/rating_menu/domain/use_cases/get_rating_use_ca
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-class MockRepository extends Mock implements RatingRepository {}
+class MockRepository extends Mock implements GetRatingRepository {}
 
 void main() {
   test('testing get rating from repository using use case', () async {

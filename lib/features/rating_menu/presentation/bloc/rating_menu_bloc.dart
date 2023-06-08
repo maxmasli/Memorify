@@ -27,17 +27,18 @@ class RatingMenuBloc extends Bloc<RatingMenuEvent, RatingMenuState> {
   ) async {
     emit(RatingMenuLoading());
 
-    late RatingEntity rating;
+    late RatingEntity ratingEntity;
     (await getRatingUseCase(NoParams())).fold(
       (l) {
         emit(RatingMenuFailure());
         return;
       },
-      (r) => rating = r,
+      (r) => ratingEntity = r,
     );
 
     late MemoPropertiesEntity props;
-    (await calculatePropertiesUseCase(RatingParams(ratingEntity: rating))).fold(
+    (await calculatePropertiesUseCase(RatingParams(ratingEntity: ratingEntity)))
+        .fold(
       (l) {
         emit(RatingMenuFailure());
         return;
