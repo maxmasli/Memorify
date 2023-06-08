@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/tutorial/presentation/widgets/body.dart';
 
 @RoutePage()
@@ -12,20 +13,20 @@ class TutorialScreen extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Методы запоминания"),
-          bottom: const TabBar(
+          title: Text(AppStrings.memorizationMethods),
+          bottom: TabBar(
             tabs: [
               Tab(
-                child: Text("Введение"),
+                child: Text(AppStrings.introduction),
               ),
               Tab(
-                child: Text("Цепочка"),
+                child: Text(AppStrings.chain),
               ),
               Tab(
-                child: Text("Матрешка"),
+                child: Text(AppStrings.matryoshka),
               ),
               Tab(
-                child: Text("Метод Цицерона"),
+                child: Text(AppStrings.cicerosMethod),
               ),
             ],
           ),

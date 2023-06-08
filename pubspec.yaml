@@ -17,7 +17,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   get_it: ^7.6.0
-  intl: ^0.18.0
   talker: ^3.0.0+1
   talker_bloc_logger: ^2.0.0
   talker_flutter: ^3.1.1

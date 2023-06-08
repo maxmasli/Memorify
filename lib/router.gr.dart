@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TutorialScreen(),
       );
     },
+    RatingMenuRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RatingMenuScreen(),
+      );
+    },
   };
 }
 
@@ -54,6 +60,20 @@ class TutorialRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TutorialRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RatingMenuScreen]
+class RatingMenuRoute extends PageRouteInfo<void> {
+  const RatingMenuRoute({List<PageRouteInfo>? children})
+      : super(
+          RatingMenuRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RatingMenuRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

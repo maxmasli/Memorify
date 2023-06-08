@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   test('testing calculating properties by rating', () async {
     final useCase = CalculatePropertiesUseCase();
-    const rating = RatingEntity(rating: 60);
+    const rating = RatingEntity(rating: 100);
 
     late MemoPropertiesEntity props;
     (await useCase(const RatingParams(ratingEntity: rating))).fold(
@@ -17,10 +17,10 @@ void main() {
     expect(
       props,
       const MemoPropertiesEntity(
-        wordsCount: 8,
-        time: 132,
+        wordsCount: 10,
+        time: 140,
         isRating: true,
-        ratingEntity: RatingEntity(rating: 60),
+        ratingEntity: RatingEntity(rating: 100),
       ),
     );
   });
