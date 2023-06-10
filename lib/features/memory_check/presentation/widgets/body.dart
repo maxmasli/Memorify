@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
@@ -5,6 +6,7 @@ import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/di.dart';
 import 'package:memorify/features/memory_check/presentation/bloc/memory_check_bloc.dart';
+import 'package:memorify/router.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 class Body extends StatelessWidget {
@@ -56,6 +58,13 @@ class Body extends StatelessWidget {
                 onPressed: () {
                   getIt<Talker>()
                       .debug('answer words: ${state.answerWordsList}');
+                  context.router.push(
+                    ResultsRoute(
+                      answerWordsList: state.answerWordsList,
+                      wordsList: state.wordsList,
+                      memoPropertiesEntity: state.memoPropertiesEntity,
+                    ),
+                  );
                 },
               ),
               const SizedBox(height: 24)

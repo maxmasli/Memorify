@@ -7,6 +7,8 @@ import 'package:memorify/core/use_case/use_case.dart';
 
 final class CalculateObtainedRatingUseCase
     extends UseCase<RatingEntity, ResultParam> {
+
+  /// Returns obtained rating
   @override
   Future<Either<Failure, RatingEntity>> call(ResultParam params) {
     const maxRating = 10;

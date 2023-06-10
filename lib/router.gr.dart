@@ -54,6 +54,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ResultsRoute.name: (routeData) {
+      final args = routeData.argsAs<ResultsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ResultsScreen(
+          wordsList: args.wordsList,
+          answerWordsList: args.answerWordsList,
+          memoPropertiesEntity: args.memoPropertiesEntity,
+          key: args.key,
+        ),
+      );
+    },
   };
 }
 
@@ -177,5 +189,53 @@ class MemoryCheckRouteArgs {
   @override
   String toString() {
     return 'MemoryCheckRouteArgs{memoPropertiesEntity: $memoPropertiesEntity, wordsList: $wordsList, key: $key}';
+  }
+}
+
+/// generated route for
+/// [ResultsScreen]
+class ResultsRoute extends PageRouteInfo<ResultsRouteArgs> {
+  ResultsRoute({
+    required List<WordEntity> wordsList,
+    required List<WordEntity> answerWordsList,
+    required MemoPropertiesEntity memoPropertiesEntity,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ResultsRoute.name,
+          args: ResultsRouteArgs(
+            wordsList: wordsList,
+            answerWordsList: answerWordsList,
+            memoPropertiesEntity: memoPropertiesEntity,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ResultsRoute';
+
+  static const PageInfo<ResultsRouteArgs> page =
+      PageInfo<ResultsRouteArgs>(name);
+}
+
+class ResultsRouteArgs {
+  const ResultsRouteArgs({
+    required this.wordsList,
+    required this.answerWordsList,
+    required this.memoPropertiesEntity,
+    this.key,
+  });
+
+  final List<WordEntity> wordsList;
+
+  final List<WordEntity> answerWordsList;
+
+  final MemoPropertiesEntity memoPropertiesEntity;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResultsRouteArgs{wordsList: $wordsList, answerWordsList: $answerWordsList, memoPropertiesEntity: $memoPropertiesEntity, key: $key}';
   }
 }

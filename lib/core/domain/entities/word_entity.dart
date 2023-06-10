@@ -14,4 +14,8 @@ class WordEntity extends Equatable {
   String toString() {
     return "Word: $word";
   }
+
+  String trim() {
+    return word.trim();
+  }
 }

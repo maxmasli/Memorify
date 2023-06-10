@@ -5,7 +5,8 @@ import 'package:memorify/core/domain/entities/word_entity.dart';
 import 'package:memorify/core/failure/failure.dart';
 import 'package:memorify/core/use_case/use_case.dart';
 
-final class CompareWordsUseCase extends UseCase<ResultEntity, WordListCompareParam> {
+final class CompareWordsUseCase
+    extends UseCase<ResultEntity, WordListCompareParam> {
   @override
   Future<Either<Failure, ResultEntity>> call(WordListCompareParam params) {
     final a = params.a;
@@ -16,7 +17,7 @@ final class CompareWordsUseCase extends UseCase<ResultEntity, WordListComparePar
     var countWorng = 0;
 
     for (var i = 0; i < a.length; i++) {
-      if (a[i] == b[i]) {
+      if (a[i].trim() == b[i].trim()) {
         countGuessed++;
       } else {
         countWorng++;

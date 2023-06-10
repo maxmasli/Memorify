@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/presentation/widgets/app_small_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/error_screen.dart';
+import 'package:memorify/di.dart';
 import 'package:memorify/features/memory_game/presentation/bloc/memory_game_bloc.dart';
 import 'package:memorify/router.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});

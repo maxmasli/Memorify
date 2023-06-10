@@ -8,7 +8,7 @@ void main() {
     final a = [
       const WordEntity(word: 'dog'),
       const WordEntity(word: 'cat'),
-      const WordEntity(word: 'bird')
+      const WordEntity(word: 'bird ')
     ];
     final b = [
       const WordEntity(word: 'dog'),

@@ -7,6 +7,9 @@ import 'package:memorify/features/memory_game/domain/repositories/words_generato
 import 'package:memorify/features/memory_game/domain/use_cases/generate_words_use_case.dart';
 import 'package:memorify/features/rating_menu/domain/use_cases/calculate_properties_use_case.dart';
 import 'package:memorify/features/rating_menu/domain/use_cases/get_rating_use_case.dart';
+import 'package:memorify/features/results/domain/use_cases/calculate_obtained_rating_use_case.dart';
+import 'package:memorify/features/results/domain/use_cases/compare_words_use_case.dart';
+import 'package:memorify/features/results/domain/use_cases/save_rating_use_case.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 final getIt = GetIt.instance;
@@ -35,5 +38,10 @@ void initDI() {
     )
     ..registerFactory(
       () => GenerateWordsUseCase(wordsGenerator: getIt<WordsGenerator>()),
+    )
+    ..registerFactory(CompareWordsUseCase.new)
+    ..registerFactory(CalculateObtainedRatingUseCase.new)
+    ..registerFactory(
+      () => SaveRatingUseCase(ratingRepository: getIt<RatingRepositoryImpl>()),
     );
 }

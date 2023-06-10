@@ -36,4 +36,9 @@ abstract class AppStrings {
   //error_screen
   static String errorMessage = 'Что-то пошло не так';
 
+  //results_screen
+  static String obtained = 'Получено: ';
+  static String playAgain = 'Играть снова';
+  static String mainMenu = 'Главное меню';
+
 }
