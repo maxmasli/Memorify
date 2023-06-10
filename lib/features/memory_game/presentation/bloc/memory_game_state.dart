@@ -17,16 +17,16 @@ class MemoryGameLoading extends MemoryGameState {
 class MemoryGameLoaded extends MemoryGameState {
   const MemoryGameLoaded({
     required this.memoPropertiesEntity,
-    required this.words,
+    required this.wordsList,
     required this.timeLeft,
   });
 
   final MemoPropertiesEntity memoPropertiesEntity;
-  final List<WordEntity> words;
+  final List<WordEntity> wordsList;
   final int timeLeft;
 
   @override
-  List<Object> get props => [memoPropertiesEntity, words, timeLeft];
+  List<Object> get props => [memoPropertiesEntity, wordsList, timeLeft];
 
   MemoryGameLoaded copyWith({
     MemoPropertiesEntity? memoPropertiesEntity,
@@ -35,7 +35,7 @@ class MemoryGameLoaded extends MemoryGameState {
   }) {
     return MemoryGameLoaded(
       memoPropertiesEntity: memoPropertiesEntity ?? this.memoPropertiesEntity,
-      words: words ?? this.words,
+      wordsList: words ?? this.wordsList,
       timeLeft: timeLeft ?? this.timeLeft,
     );
   }

@@ -10,6 +10,7 @@ import 'package:memorify/features/rating_menu/domain/use_cases/get_rating_use_ca
 import 'package:memorify/features/results/domain/use_cases/calculate_obtained_rating_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/compare_words_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/save_rating_use_case.dart';
+import 'package:memorify/router.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 final getIt = GetIt.instance;
@@ -18,6 +19,7 @@ void initDI() {
   final talker = Talker();
   getIt
     ..registerSingleton<Talker>(talker)
+    ..registerSingleton<AppRouter>(AppRouter())
 
     //data sources
     ..registerLazySingleton<RatingDataSource>(RatingDataSourceImpl.new)

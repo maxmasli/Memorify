@@ -7,7 +7,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 class App extends StatelessWidget {
   App({super.key});
 
-  final _appRouter = AppRouter();
+  final _appRouter = getIt<AppRouter>();
 
   @override
   Widget build(BuildContext context) {

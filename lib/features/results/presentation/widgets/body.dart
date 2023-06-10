@@ -12,72 +12,80 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ResultsBloc, ResultsState>(
-      builder: (context, state) {
-        if (state is ResultsLoaded) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      '${state.resultEntity.countGuessed}/${state.resultEntity.countGuessed + state.resultEntity.countWrong}',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  if (state.memoPropertiesEntity.isRating)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppStrings.obtained +
-                                state.obtainedRating!.asCount(),
-                          ),
-                          Text(
-                            AppStrings.rating + state.rating!.rating.toString(),
-                          )
-                        ],
+    return WillPopScope(
+      onWillPop: () async {
+        context.router
+          ..popUntilRoot()
+          ..push(const RatingMenuRoute());
+        return false;
+      },
+      child: BlocBuilder<ResultsBloc, ResultsState>(
+        builder: (context, state) {
+          if (state is ResultsLoaded) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        '${state.resultEntity.countGuessed}/${state.resultEntity.countGuessed + state.resultEntity.countWrong}',
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                ],
-              ),
-              Column(
-                children: [
-                  AppButtonWidget(
-                    text: AppStrings.playAgain,
-                    onPressed: () {
-                      context.router
-                        ..popUntilRoot()
-                        ..push(const RatingMenuRoute());
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                  AppButtonWidget(
-                    text: AppStrings.mainMenu,
-                    onPressed: () {
-                      context.router.popUntilRoot();
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                ],
-              ),
-            ],
-          );
-        } else if (state is ResultsLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else {
-          return const ErrorScreen();
-        }
-      },
+                    if (state.memoPropertiesEntity.isRating)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppStrings.obtained +
+                                  state.obtainedRating!.asCount(),
+                            ),
+                            Text(
+                              AppStrings.rating + state.rating!.rating.toString(),
+                            )
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    AppButtonWidget(
+                      text: AppStrings.playAgain,
+                      onPressed: () {
+                        context.router
+                          ..popUntilRoot()
+                          ..push(const RatingMenuRoute());
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    AppButtonWidget(
+                      text: AppStrings.mainMenu,
+                      onPressed: () {
+                        context.router.popUntilRoot();
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                  ],
+                ),
+              ],
+            );
+          } else if (state is ResultsLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return const ErrorScreen();
+          }
+        },
+      ),
     );
   }
 }

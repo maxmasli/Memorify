@@ -38,7 +38,7 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
         emit(
           MemoryGameLoaded(
             memoPropertiesEntity: props,
-            words: r,
+            wordsList: r,
             timeLeft: props.time,
           ),
         );

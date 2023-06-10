@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memorify/core/styles/colors.dart';
 
 class AppSmallButtonWidget extends StatelessWidget {
   const AppSmallButtonWidget({
@@ -28,6 +29,7 @@ class AppSmallButtonWidget extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
+                overlayColor: MaterialStateProperty.all(AppColors.darkPink),
                 onTap: onTap,
               ),
             ),

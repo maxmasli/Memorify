@@ -41,4 +41,11 @@ abstract class AppStrings {
   static String playAgain = 'Играть снова';
   static String mainMenu = 'Главное меню';
 
+  //dialog
+  static String warning = 'Предупреждение';
+  static String areYouSure = 'Вы уверены что не хотите продолжать?';
+
+  static String yes = 'Да';
+  static String no = 'Нет';
+
 }

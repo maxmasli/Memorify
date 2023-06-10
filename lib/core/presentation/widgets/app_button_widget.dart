@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memorify/core/styles/colors.dart';
 
 class AppButtonWidget extends StatelessWidget {
   const AppButtonWidget({
@@ -29,6 +30,7 @@ class AppButtonWidget extends StatelessWidget {
             children: [
               Text(text, style: Theme.of(context).textTheme.bodyMedium),
               InkWell(
+                overlayColor: MaterialStateProperty.all(AppColors.darkPink),
                 onTap: onPressed,
               ),
             ],
