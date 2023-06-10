@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:memorify/core/domain/entities/memo_properties_entity.dart';
+import 'package:memorify/core/domain/entities/word_entity.dart';
 import 'package:memorify/features/main_menu/presentation/pages/main_menu_screen.dart';
 import 'package:memorify/features/memory_check/presentation/pages/memory_check_screen.dart';
 import 'package:memorify/features/memory_game/presentation/pages/memory_game_screen.dart';

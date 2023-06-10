@@ -15,7 +15,12 @@ class Body extends StatelessWidget {
       listener: (context, state) {
         if (state is MemoryGameLoaded) {
           if (state.timeLeft == 0) {
-            context.router.push(const MemoryCheckRoute());
+            context.router.push(
+              MemoryCheckRoute(
+                memoPropertiesEntity: state.memoPropertiesEntity,
+                wordsList: state.words,
+              ),
+            );
           }
         }
       },
@@ -56,7 +61,16 @@ class Body extends StatelessWidget {
                         child: AppSmallButtonWidget(
                           child: const Icon(Icons.arrow_forward),
                           onTap: () {
-                            context.router.push(const MemoryCheckRoute());
+                            context
+                                .read<MemoryGameBloc>()
+                                .add(StopMemoryEvent());
+                            context.router.push(
+                              MemoryCheckRoute(
+                                memoPropertiesEntity:
+                                    state.memoPropertiesEntity,
+                                wordsList: state.words,
+                              ),
+                            );
                           },
                         ),
                       )
@@ -77,5 +91,3 @@ class Body extends StatelessWidget {
     );
   }
 }
-
-

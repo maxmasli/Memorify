@@ -44,9 +44,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     MemoryCheckRoute.name: (routeData) {
+      final args = routeData.argsAs<MemoryCheckRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MemoryCheckScreen(),
+        child: MemoryCheckScreen(
+          memoPropertiesEntity: args.memoPropertiesEntity,
+          wordsList: args.wordsList,
+          key: args.key,
+        ),
       );
     },
   };
@@ -134,14 +139,43 @@ class TutorialRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MemoryCheckScreen]
-class MemoryCheckRoute extends PageRouteInfo<void> {
-  const MemoryCheckRoute({List<PageRouteInfo>? children})
-      : super(
+class MemoryCheckRoute extends PageRouteInfo<MemoryCheckRouteArgs> {
+  MemoryCheckRoute({
+    required MemoPropertiesEntity memoPropertiesEntity,
+    required List<WordEntity> wordsList,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           MemoryCheckRoute.name,
+          args: MemoryCheckRouteArgs(
+            memoPropertiesEntity: memoPropertiesEntity,
+            wordsList: wordsList,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'MemoryCheckRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<MemoryCheckRouteArgs> page =
+      PageInfo<MemoryCheckRouteArgs>(name);
+}
+
+class MemoryCheckRouteArgs {
+  const MemoryCheckRouteArgs({
+    required this.memoPropertiesEntity,
+    required this.wordsList,
+    this.key,
+  });
+
+  final MemoPropertiesEntity memoPropertiesEntity;
+
+  final List<WordEntity> wordsList;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MemoryCheckRouteArgs{memoPropertiesEntity: $memoPropertiesEntity, wordsList: $wordsList, key: $key}';
+  }
 }

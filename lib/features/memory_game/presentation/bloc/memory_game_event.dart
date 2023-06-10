@@ -15,3 +15,8 @@ class GenerateWordsEvent extends MemoryGameEvent {
   @override
   List<Object> get props => [];
 }
+
+class StopMemoryEvent extends MemoryGameEvent {
+  @override
+  List<Object> get props => [];
+}

@@ -30,6 +30,9 @@ abstract class AppStrings {
   static String back = 'Назад';
   static String start = 'Начать';
 
+  //memory_check
+  static String end = 'Закончить';
+
   //error_screen
   static String errorMessage = 'Что-то пошло не так';
 

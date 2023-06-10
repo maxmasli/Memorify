@@ -9,3 +9,8 @@ final class HiveFailure extends Failure {
   List<Object> get props => [];
 }
 
+final class WordsGeneratorFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
