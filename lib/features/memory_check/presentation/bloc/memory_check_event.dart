@@ -16,3 +16,17 @@ class LoadPropsEvent extends MemoryCheckEvent {
   @override
   List<Object> get props => [memoPropertiesEntity, wordsList];
 }
+
+class WordChangedEvent extends MemoryCheckEvent {
+
+  const WordChangedEvent({
+    required this.index,
+    required this.word,
+  });
+
+  final int index;
+  final String word;
+
+  @override
+  List<Object> get props => [index, word];
+}

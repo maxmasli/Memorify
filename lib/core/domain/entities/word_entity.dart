@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-final class WordEntity extends Equatable {
+class WordEntity extends Equatable {
   const WordEntity({
     required this.word,
   });
@@ -9,4 +9,9 @@ final class WordEntity extends Equatable {
 
   @override
   List<Object> get props => [word];
+
+  @override
+  String toString() {
+    return "Word: $word";
+  }
 }

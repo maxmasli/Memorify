@@ -13,12 +13,27 @@ class MemoryCheckLoaded extends MemoryCheckState {
   const MemoryCheckLoaded({
     required this.memoPropertiesEntity,
     required this.wordsList,
+    required this.answerWordsList,
   });
 
   final MemoPropertiesEntity memoPropertiesEntity;
   final List<WordEntity> wordsList;
+  final List<WordEntity> answerWordsList;
+
+  MemoryCheckLoaded copyWith({
+    MemoPropertiesEntity? memoPropertiesEntity,
+    List<WordEntity>? wordsList,
+    List<WordEntity>? answerWordsList,
+  }) {
+    return MemoryCheckLoaded(
+      memoPropertiesEntity: memoPropertiesEntity ?? this.memoPropertiesEntity,
+      wordsList: wordsList ?? this.wordsList,
+      answerWordsList: answerWordsList ?? this.answerWordsList,
+    );
+  }
 
   @override
-  List<Object> get props => [memoPropertiesEntity, wordsList];
+  List<Object> get props => [memoPropertiesEntity, wordsList, answerWordsList];
+
 }
 
