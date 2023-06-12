@@ -66,6 +66,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    TrainingMenuRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TrainingMenuScreen(),
+      );
+    },
   };
 }
 
@@ -238,4 +244,18 @@ class ResultsRouteArgs {
   String toString() {
     return 'ResultsRouteArgs{wordsList: $wordsList, answerWordsList: $answerWordsList, memoPropertiesEntity: $memoPropertiesEntity, key: $key}';
   }
+}
+
+/// generated route for
+/// [TrainingMenuScreen]
+class TrainingMenuRoute extends PageRouteInfo<void> {
+  const TrainingMenuRoute({List<PageRouteInfo>? children})
+      : super(
+          TrainingMenuRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TrainingMenuRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

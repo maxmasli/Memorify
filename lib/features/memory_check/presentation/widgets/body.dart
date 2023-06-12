@@ -49,7 +49,10 @@ class Body extends StatelessWidget {
                         child: TextField(
                           onChanged: (s) =>
                               bloc.add(WordChangedEvent(index: index, word: s)),
-                          cursorColor: Colors.black,
+                          cursorColor: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .color,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),

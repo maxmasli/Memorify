@@ -24,7 +24,12 @@ class Body extends StatelessWidget {
             },
           ),
           const SizedBox(height: 24),
-          AppButtonWidget(text: AppStrings.training, onPressed: () {}),
+          AppButtonWidget(
+            text: AppStrings.training,
+            onPressed: () {
+              context.router.push(const TrainingMenuRoute());
+            },
+          ),
           const SizedBox(height: 24),
           AppButtonWidget(text: AppStrings.statistic, onPressed: () {}),
           const SizedBox(height: 24),

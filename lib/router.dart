@@ -7,6 +7,7 @@ import 'package:memorify/features/memory_check/presentation/pages/memory_check_s
 import 'package:memorify/features/memory_game/presentation/pages/memory_game_screen.dart';
 import 'package:memorify/features/rating_menu/presentation/pages/rating_menu_screen.dart';
 import 'package:memorify/features/results/presentation/pages/results_screen.dart';
+import 'package:memorify/features/training_menu/presentation/pages/training_menu_screen.dart';
 import 'package:memorify/features/tutorial/presentation/pages/tutorial_screen.dart';
 
 part 'router.gr.dart';
@@ -38,6 +39,11 @@ class AppRouter extends _$AppRouter {
         ),
         CustomRoute(
           page: ResultsRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 150,
+        ),
+        CustomRoute(
+          page: TrainingMenuRoute.page,
           transitionsBuilder: TransitionsBuilders.fadeIn,
           durationInMilliseconds: 150,
         ),
