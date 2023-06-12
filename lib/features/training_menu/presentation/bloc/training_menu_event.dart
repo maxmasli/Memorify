@@ -25,3 +25,8 @@ class SetTimeEvent extends TrainingMenuEvent {
   @override
   List<Object> get props => [value];
 }
+
+class StartGameEvent extends TrainingMenuEvent {
+  @override
+  List<Object> get props => [];
+}

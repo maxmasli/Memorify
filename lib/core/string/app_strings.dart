@@ -48,4 +48,7 @@ abstract class AppStrings {
   static String yes = 'Да';
   static String no = 'Нет';
 
+  static String wordCountError = 'Кол-во слов не может быть пустым или равным 0';
+  static String timeError = 'Время не может быть пустым или равным 0';
+
 }

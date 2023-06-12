@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppNumberTextField extends StatelessWidget {
-  const AppNumberTextField({required this.onChanged, super.key});
+  const AppNumberTextField(
+      {required this.onChanged, this.errorText, super.key});
 
   final ValueChanged<String> onChanged;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100,
       child: TextField(
+
         style: const TextStyle(fontSize: 22),
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
@@ -18,22 +21,47 @@ class AppNumberTextField extends StatelessWidget {
           LengthLimitingTextInputFormatter(3)
         ],
         onChanged: onChanged,
-        cursorColor: Theme.of(context).textTheme.bodyMedium!.color,
+        cursorColor: Theme
+            .of(context)
+            .textTheme
+            .bodyMedium!
+            .color,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(8),
-          isCollapsed: true,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
+            errorText: errorText,
+            contentPadding: const EdgeInsets.all(8),
+            isCollapsed: true,
+            errorStyle: const TextStyle(fontSize: 14),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                color: Colors.red,
+              ),
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: Theme.of(context).textTheme.bodyMedium!.color!,
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                color: Colors.red,
+              ),
             ),
-          )
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .primary,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: Theme
+                    .of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .color!,
+              ),
+            )
         ),
       ),
     );

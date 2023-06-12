@@ -55,7 +55,8 @@ class MemoryGameBloc extends Bloc<MemoryGameEvent, MemoryGameState> {
       _timePassed++;
       if (state is MemoryGameLoaded) {
         emit(
-            (state as MemoryGameLoaded).copyWith(timeLeft: time - _timePassed));
+          (state as MemoryGameLoaded).copyWith(timeLeft: time - _timePassed),
+        );
       }
       if (_timePassed >= time) {
         timer.cancel();

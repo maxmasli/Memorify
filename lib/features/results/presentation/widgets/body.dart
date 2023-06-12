@@ -60,9 +60,15 @@ class Body extends StatelessWidget {
                     AppButtonWidget(
                       text: AppStrings.playAgain,
                       onPressed: () {
-                        context.router
-                          ..popUntilRoot()
-                          ..push(const RatingMenuRoute());
+                        if (state.memoPropertiesEntity.isRating) {
+                          context.router
+                            ..popUntilRoot()
+                            ..push(const RatingMenuRoute());
+                        } else {
+                          context.router
+                            ..popUntilRoot()
+                            ..push(const TrainingMenuRoute());
+                        }
                       },
                     ),
                     const SizedBox(height: 24),

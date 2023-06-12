@@ -12,53 +12,66 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<TrainingMenuBloc>();
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          child: Column(
-            children: [
-              Row(
+    return BlocBuilder<TrainingMenuBloc, TrainingMenuState>(
+      builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Column(
                 children: [
-                  Text(AppStrings.wordsCount),
-                  AppNumberTextField(
-                    onChanged: (value) => bloc.add(
-                      SetWordCountEvent(value: value),
-                    ),
+                  Row(
+                    children: [
+                      Text(AppStrings.wordsCount),
+                      AppNumberTextField(
+                        errorText: state.wordCountError,
+                        onChanged: (value) =>
+                            bloc.add(
+                              SetWordCountEvent(value: value),
+                            ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(AppStrings.time),
+                      AppNumberTextField(
+                        errorText: state.timeError,
+                        onChanged: (value) =>
+                            bloc.add(
+                              SetTimeEvent(value: value),
+                            ),
+                      ),
+                      Text(AppStrings.sec)
+                    ],
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Text(AppStrings.time),
-                  AppNumberTextField(
-                    onChanged: (value) => bloc.add(
-                      SetTimeEvent(value: value),
-                    ),
-                  ),
-                  Text(AppStrings.sec)
-                ],
-              )
-            ],
-          ),
-        ),
-        Column(
-          children: [
-            AppButtonWidget(
-              text: AppStrings.back,
-              onPressed: () => context.router.pop(),
             ),
-            const SizedBox(height: 24),
-            AppButtonWidget(text: AppStrings.start, onPressed: () {}),
-            const SizedBox(height: 24),
+            Column(
+              children: [
+                AppButtonWidget(
+                  text: AppStrings.back,
+                  onPressed: () => context.router.pop(),
+                ),
+                const SizedBox(height: 24),
+                AppButtonWidget(
+                  text: AppStrings.start,
+                  onPressed: () {
+                    bloc.add(StartGameEvent());
+                  },
+                ),
+                const SizedBox(height: 24),
+              ],
+            )
           ],
-        )
-      ],
+        );
+      },
     );
   }
 }
