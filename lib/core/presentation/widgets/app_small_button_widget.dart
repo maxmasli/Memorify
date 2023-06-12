@@ -18,7 +18,7 @@ class AppSmallButtonWidget extends StatelessWidget {
       width: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.primary,
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -29,7 +29,9 @@ class AppSmallButtonWidget extends StatelessWidget {
             child: Material(
               color: Colors.transparent,
               child: InkWell(
-                overlayColor: MaterialStateProperty.all(AppColors.darkPink),
+                overlayColor: MaterialStateProperty.all(
+                  Theme.of(context).colorScheme.secondary,
+                ),
                 onTap: onTap,
               ),
             ),

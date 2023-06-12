@@ -7,8 +7,10 @@ ThemeData createLightTheme() {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Nunito',
     primaryColor: Colors.white,
-    colorScheme: theme.colorScheme
-        .copyWith(secondary: AppColors.pink, primary: Colors.black),
+    colorScheme: theme.colorScheme.copyWith(
+      secondary: AppColors.darkPink,
+      primary: AppColors.pink,
+    ),
     useMaterial3: true,
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontSize: 36),

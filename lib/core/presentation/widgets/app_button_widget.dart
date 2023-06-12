@@ -18,7 +18,7 @@ class AppButtonWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 48),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.primary,
       ),
       //width: double.infinity,
       child: ClipRRect(
@@ -30,7 +30,9 @@ class AppButtonWidget extends StatelessWidget {
             children: [
               Text(text, style: Theme.of(context).textTheme.bodyMedium),
               InkWell(
-                overlayColor: MaterialStateProperty.all(AppColors.darkPink),
+                overlayColor: MaterialStateProperty.all(
+                  Theme.of(context).colorScheme.secondary,
+                ),
                 onTap: onPressed,
               ),
             ],
