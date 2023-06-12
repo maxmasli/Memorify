@@ -2,8 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:memorify/core/data/local_data_source/rating_data_source.dart';
 import 'package:memorify/core/data/models/rating_model.dart';
 import 'package:memorify/core/domain/entities/rating_entity.dart';
-import 'package:memorify/core/domain/repositories/rating_repository.dart';
+import 'package:memorify/features/results/domain/repositories/save_rating_repository.dart';
 import 'package:memorify/core/failure/failure.dart';
+import 'package:memorify/features/rating_menu/domain/repositories/get_rating_repository.dart';
 
 class RatingRepositoryImpl
     implements GetRatingRepository, SaveRatingRepository {
