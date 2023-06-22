@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/domain/entities/rating_entity.dart';
@@ -9,40 +10,63 @@ import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/presentation/widgets/exit_dialog_widget.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/statistics/presentation/bloc/statistics_bloc.dart';
-import 'package:memorify/features/statistics/presentation/widgets/chart_painter.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   const Body({super.key});
 
   @override
-  State<Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
-  final TransformationController _transformationController =
-      TransformationController();
-
-  @override
   Widget build(BuildContext context) {
+    const gap = 6;
     return BlocBuilder<StatisticsBloc, StatisticsState>(
       builder: (context, state) {
         final bloc = context.read<StatisticsBloc>();
         if (state is StatisticsLoaded) {
           return Column(
             children: [
-              InteractiveViewer(
-                transformationController: _transformationController,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  //width: MediaQuery.of(context).size.height,
-                  height: 500,
-                  child: CustomPaint(
-                    painter: ChartPainter(
-                      state.ratingList
-                          .map((e) => e.rating.toDouble())
-                          .toList(),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: SizedBox(
+                      width: max(
+                        MediaQuery.of(context).size.width - 20,
+                        38 + (gap * state.ratingList.length.toDouble()),
+                      ),
+                      child: LineChart(
+                        LineChartData(
+                          gridData: const FlGridData(
+                            drawHorizontalLine: false,
+                          ),
+                          titlesData: FlTitlesData(
+                            rightTitles: const AxisTitles(),
+                            topTitles: const AxisTitles(),
+                            bottomTitles: const AxisTitles(),
+                            leftTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: true,
+                                interval: 10,
+                                reservedSize: 38,
+                                getTitlesWidget: (value, titleMeta) {
+                                  return Text(
+                                    value.toInt().toString(),
+                                    style: const TextStyle(fontSize: 20),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          lineBarsData: [
+                            LineChartBarData(
+                              spots: _makeFlSpots(state.ratingList),
+                              dotData: const FlDotData(show: false),
+                              color: Theme.of(context).colorScheme.primary,
+                              barWidth: 3,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    size: Size.infinite,
                   ),
                 ),
               ),
@@ -85,5 +109,13 @@ class _BodyState extends State<Body> {
         }
       },
     );
+  }
+
+  List<FlSpot> _makeFlSpots(List<RatingEntity> ratingList) {
+    final spotsList = <FlSpot>[];
+    for (var i = 0; i < ratingList.length; i++) {
+      spotsList.add(FlSpot(i.toDouble(), ratingList[i].rating.toDouble()));
+    }
+    return spotsList;
   }
 }
