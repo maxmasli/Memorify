@@ -35,7 +35,7 @@ class Body extends StatelessWidget {
                     child: LineChart(
                       LineChartData(
                         gridData: const FlGridData(
-                          drawHorizontalLine: false,
+                          show: false,
                         ),
                         titlesData: FlTitlesData(
                           rightTitles: const AxisTitles(),
@@ -44,12 +44,14 @@ class Body extends StatelessWidget {
                           leftTitles: AxisTitles(
                             sideTitles: SideTitles(
                               showTitles: true,
-                              interval: 10,
+                              interval: state.maxRating != 0
+                                  ? state.maxRating / 5
+                                  : 1,
                               reservedSize: 38,
                               getTitlesWidget: (value, titleMeta) {
                                 return Text(
                                   value.toInt().toString(),
-                                  style: const TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 14),
                                 );
                               },
                             ),

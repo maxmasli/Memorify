@@ -16,7 +16,7 @@ final class GetAllRatingUseCase extends UseCase<List<RatingEntity>, NoParams> {
   @override
   Future<Either<Failure, List<RatingEntity>>> call(NoParams params) async {
     // final ratingList = <RatingEntity>[];
-    // for (var i = 0; i < 500; i++) {
+    // for (var i = 0; i < 100; i++) {
     //   final r = RatingEntity(rating: Random().nextInt(100));
     //   ratingList.add(r);
     // }
