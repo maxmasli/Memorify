@@ -9,9 +9,18 @@ import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/presentation/widgets/exit_dialog_widget.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/statistics/presentation/bloc/statistics_bloc.dart';
+import 'package:memorify/features/statistics/presentation/widgets/chart_painter.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({super.key});
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  final TransformationController _transformationController =
+      TransformationController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,52 +30,19 @@ class Body extends StatelessWidget {
         if (state is StatisticsLoaded) {
           return Column(
             children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: LineChart(
-                    LineChartData(
-                      gridData: const FlGridData(
-                        horizontalInterval: 1,
-                        verticalInterval: 1,
-                        drawVerticalLine: false,
-                        drawHorizontalLine: false,
-                      ),
-                      titlesData: FlTitlesData(
-                        rightTitles: const AxisTitles(),
-                        topTitles: const AxisTitles(),
-                        bottomTitles: const AxisTitles(),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 1,
-                            getTitlesWidget: leftTitleWidgets,
-                            reservedSize: 32,
-                          ),
-                        ),
-                      ),
-                      borderData: FlBorderData(
-                        show: true,
-                        border: Border.all(
-                          color:
-                              Theme.of(context).textTheme.bodyMedium!.color!,
-                        ),
-                      ),
-                      minX: 0,
-                      maxX: state.ratingList.length.toDouble() - 1,
-                      minY: 0,
-                      maxY: state.maxRating.toDouble() + 2,
-                      lineBarsData: [
-                        LineChartBarData(
-                          color: Theme.of(context).colorScheme.primary,
-                          spots: getFlSpots(state.ratingList),
-                          barWidth: 5,
-                          dotData: const FlDotData(
-                            show: false,
-                          ),
-                        ),
-                      ],
+              InteractiveViewer(
+                transformationController: _transformationController,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  //width: MediaQuery.of(context).size.height,
+                  height: 500,
+                  child: CustomPaint(
+                    painter: ChartPainter(
+                      state.ratingList
+                          .map((e) => e.rating.toDouble())
+                          .toList(),
                     ),
+                    size: Size.infinite,
                   ),
                 ),
               ),
@@ -109,25 +85,5 @@ class Body extends StatelessWidget {
         }
       },
     );
-  }
-
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    if (value % 5 == 0) {
-      return Text(
-        value.toInt().toString(),
-        style: const TextStyle(fontSize: 16),
-        textAlign: TextAlign.center,
-      );
-    } else {
-      return const SizedBox();
-    }
-  }
-
-  List<FlSpot> getFlSpots(List<RatingEntity> ratingList) {
-    final spots = <FlSpot>[];
-    for (var i = 0; i < ratingList.length; i++) {
-      spots.add(FlSpot(i.toDouble(), ratingList[i].rating.toDouble()));
-    }
-    return spots;
   }
 }
