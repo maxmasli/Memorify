@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:memorify/core/styles/colors.dart';
 
 class AppNumberTextField extends StatelessWidget {
   const AppNumberTextField(
@@ -11,9 +12,8 @@ class AppNumberTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100,
+      width: 70,
       child: TextField(
-
         style: const TextStyle(fontSize: 22),
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
@@ -33,14 +33,14 @@ class AppNumberTextField extends StatelessWidget {
             errorStyle: const TextStyle(fontSize: 14),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(
-                color: Colors.red,
+              borderSide: BorderSide(
+                color: AppColors.error,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide: const BorderSide(
-                color: Colors.red,
+              borderSide: BorderSide(
+                color: AppColors.error,
               ),
             ),
             focusedBorder: OutlineInputBorder(

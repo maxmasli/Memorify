@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/app_number_text_field.dart';
 import 'package:memorify/core/string/app_strings.dart';
+import 'package:memorify/core/styles/colors.dart';
 import 'package:memorify/features/training_menu/presentation/bloc/training_menu_bloc.dart';
 
 class Body extends StatelessWidget {
@@ -25,31 +26,49 @@ class Body extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Text(AppStrings.wordsCount),
-                      AppNumberTextField(
-                        errorText: state.wordCountError,
-                        onChanged: (value) =>
-                            bloc.add(
-                              SetWordCountEvent(value: value),
-                            ),
-                      )
-                    ],
+                  SizedBox(
+                    width: double.infinity,
+                    child: Wrap(
+                      children: [
+                        Text(AppStrings.wordsCount),
+                        AppNumberTextField(
+                          onChanged: (value) => bloc.add(
+                            SetWordCountEvent(value: value),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Text(AppStrings.time),
-                      AppNumberTextField(
-                        errorText: state.timeError,
-                        onChanged: (value) =>
-                            bloc.add(
-                              SetTimeEvent(value: value),
-                            ),
-                      ),
-                      Text(AppStrings.sec)
-                    ],
-                  )
+                  SizedBox(
+                    width: double.infinity,
+                    child: Wrap(
+                      children: [
+                        Text(AppStrings.time),
+                        AppNumberTextField(
+                          onChanged: (value) => bloc.add(
+                            SetTimeEvent(value: value),
+                          ),
+                        ),
+                        Text(AppStrings.sec)
+                      ],
+                    ),
+                  ),
+                  if (state.wordCountError != null)
+                    Text(
+                      state.wordCountError!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(fontSize: 20, color: AppColors.error),
+                    ),
+                  if (state.timeError != null)
+                    Text(
+                      state.timeError!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(fontSize: 20, color: AppColors.error)
+                    ),
                 ],
               ),
             ),

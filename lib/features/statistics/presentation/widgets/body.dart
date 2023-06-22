@@ -26,45 +26,43 @@ class Body extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: SizedBox(
-                      width: max(
-                        MediaQuery.of(context).size.width - 20,
-                        38 + (gap * state.ratingList.length.toDouble()),
-                      ),
-                      child: LineChart(
-                        LineChartData(
-                          gridData: const FlGridData(
-                            drawHorizontalLine: false,
-                          ),
-                          titlesData: FlTitlesData(
-                            rightTitles: const AxisTitles(),
-                            topTitles: const AxisTitles(),
-                            bottomTitles: const AxisTitles(),
-                            leftTitles: AxisTitles(
-                              sideTitles: SideTitles(
-                                showTitles: true,
-                                interval: 10,
-                                reservedSize: 38,
-                                getTitlesWidget: (value, titleMeta) {
-                                  return Text(
-                                    value.toInt().toString(),
-                                    style: const TextStyle(fontSize: 20),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          lineBarsData: [
-                            LineChartBarData(
-                              spots: _makeFlSpots(state.ratingList),
-                              dotData: const FlDotData(show: false),
-                              color: Theme.of(context).colorScheme.primary,
-                              barWidth: 3,
-                            ),
-                          ],
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    width: max(
+                      MediaQuery.of(context).size.width - 20,
+                      38 + (gap * state.ratingList.length.toDouble()),
+                    ),
+                    child: LineChart(
+                      LineChartData(
+                        gridData: const FlGridData(
+                          drawHorizontalLine: false,
                         ),
+                        titlesData: FlTitlesData(
+                          rightTitles: const AxisTitles(),
+                          topTitles: const AxisTitles(),
+                          bottomTitles: const AxisTitles(),
+                          leftTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                              showTitles: true,
+                              interval: 10,
+                              reservedSize: 38,
+                              getTitlesWidget: (value, titleMeta) {
+                                return Text(
+                                  value.toInt().toString(),
+                                  style: const TextStyle(fontSize: 20),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        lineBarsData: [
+                          LineChartBarData(
+                            spots: _makeFlSpots(state.ratingList),
+                            dotData: const FlDotData(show: false),
+                            color: Theme.of(context).colorScheme.primary,
+                            barWidth: 3,
+                          ),
+                        ],
                       ),
                     ),
                   ),
