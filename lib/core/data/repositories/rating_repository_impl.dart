@@ -5,13 +5,15 @@ import 'package:memorify/core/domain/entities/rating_entity.dart';
 import 'package:memorify/features/results/domain/repositories/save_rating_repository.dart';
 import 'package:memorify/core/failure/failure.dart';
 import 'package:memorify/features/rating_menu/domain/repositories/get_rating_repository.dart';
+import 'package:memorify/features/statistics/domain/repositories/delete_rating_repository.dart';
 import 'package:memorify/features/statistics/domain/repositories/get_all_rating_repository.dart';
 
 class RatingRepositoryImpl
     implements
         GetRatingRepository,
         SaveRatingRepository,
-        GetAllRatingRepository {
+        GetAllRatingRepository,
+        DeleteRatingRepository {
   const RatingRepositoryImpl({
     required RatingDataSource ratingDataSource,
   }) : _ratingDataSource = ratingDataSource;
@@ -42,6 +44,15 @@ class RatingRepositoryImpl
   }
 
   @override
+  Future<Either<Failure, void>> deleteRating() async {
+    try {
+      return Right(await _ratingDataSource.deleteRating());
+    } catch (e) {
+      return Left(HiveFailure());
+    }
+  }
+
+  @override
   Future<Either<Failure, List<RatingEntity>>> getAllRating() async {
     try {
       final ratingList = (await _ratingDataSource.getAllRating())
@@ -52,4 +63,6 @@ class RatingRepositoryImpl
       return Left(HiveFailure());
     }
   }
+
+
 }

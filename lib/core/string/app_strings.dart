@@ -43,13 +43,18 @@ abstract class AppStrings {
 
   //dialog
   static String warning = 'Предупреждение';
-  static String areYouSure = 'Вы уверены что не хотите продолжать?';
+  static String areYouSureToExit = 'Вы уверены что не хотите продолжать?';
 
   static String yes = 'Да';
   static String no = 'Нет';
 
   //training_menu
-  static String wordCountError = 'Кол-во слов не может быть пустым или равным 0';
+  static String wordCountError =
+      'Кол-во слов не может быть пустым или равным 0';
   static String timeError = 'Время не может быть пустым или равным 0';
 
+  //stats
+  static String maxRating = 'Макс. рейтинг: ';
+  static String areYouSureToDelete =
+      'Вы уверены что хотите удалить весь рейтинг?';
 }

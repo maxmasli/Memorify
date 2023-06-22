@@ -24,7 +24,7 @@ class Body extends StatelessWidget {
               final isExit = await showDialog<bool>(
                 context: context,
                 builder: (context) {
-                  return const ExitDialogWidget();
+                  return AskDialogWidget(text: AppStrings.areYouSureToExit);
                 },
               );
               if (isExit != null && isExit) {

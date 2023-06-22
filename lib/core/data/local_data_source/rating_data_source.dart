@@ -9,6 +9,8 @@ abstract interface class RatingDataSource {
   Future<void> saveRating(RatingModel model);
 
   Future<List<RatingModel>> getAllRating();
+
+  Future<void> deleteRating();
 }
 
 class RatingDataSourceImpl implements RatingDataSource {
@@ -47,7 +49,16 @@ class RatingDataSourceImpl implements RatingDataSource {
     return Future.value(ratingList);
   }
 
+  @override
+  Future<void> deleteRating() async {
+    final box = await _openBox();
+    await box.deleteFromDisk();
+    await box.close();
+  }
+
   Future<Box<RatingModel>> _openBox() async {
     return Hive.openBox<RatingModel>('rating');
   }
+
+
 }

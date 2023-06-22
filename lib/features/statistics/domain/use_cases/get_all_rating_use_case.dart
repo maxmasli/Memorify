@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:memorify/core/domain/entities/rating_entity.dart';
 import 'package:memorify/core/failure/failure.dart';
 import 'package:memorify/core/params/params.dart';
@@ -12,6 +15,13 @@ final class GetAllRatingUseCase extends UseCase<List<RatingEntity>, NoParams> {
 
   @override
   Future<Either<Failure, List<RatingEntity>>> call(NoParams params) async {
+    // final ratingList = <RatingEntity>[];
+    // for (var i = 0; i < 200; i++) {
+    //   final r = RatingEntity(rating: Random().nextInt(100));
+    //   ratingList.add(r);
+    // }
+    // debugPrint(ratingList.length.toString());
+    // return Future.value(Right(ratingList));
     return ratingRepository.getAllRating();
   }
 }

@@ -16,9 +16,10 @@ class StatisticsLoading extends StatisticsState {
 
 class StatisticsLoaded extends StatisticsState {
   const StatisticsLoaded({
+    required this.maxRating,
     required this.ratingList,
   });
-
+  final int maxRating;
   final List<RatingEntity> ratingList;
 
   @override

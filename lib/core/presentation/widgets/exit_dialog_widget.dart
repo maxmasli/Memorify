@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:memorify/core/string/app_strings.dart';
 
-class ExitDialogWidget extends StatelessWidget {
-  const ExitDialogWidget({super.key});
+class AskDialogWidget extends StatelessWidget {
+  const AskDialogWidget({required this.text, super.key});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class ExitDialogWidget extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       title: Text(AppStrings.warning),
       content: Text(
-        AppStrings.areYouSure,
+        text,
         style: Theme.of(context).textTheme.bodySmall,
       ),
       actions: [

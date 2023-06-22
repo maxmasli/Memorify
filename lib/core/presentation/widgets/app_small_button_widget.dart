@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:memorify/core/styles/colors.dart';
 
 class AppSmallButtonWidget extends StatelessWidget {
   const AppSmallButtonWidget({

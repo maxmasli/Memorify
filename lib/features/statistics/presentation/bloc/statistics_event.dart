@@ -8,3 +8,8 @@ class GetStatisticsEvent extends StatisticsEvent {
   @override
   List<Object> get props => [];
 }
+
+class DeleteStatisticsEvent extends StatisticsEvent {
+  @override
+  List<Object> get props => [];
+}

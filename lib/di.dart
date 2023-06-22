@@ -10,6 +10,7 @@ import 'package:memorify/features/rating_menu/domain/use_cases/get_rating_use_ca
 import 'package:memorify/features/results/domain/use_cases/calculate_obtained_rating_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/compare_words_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/save_rating_use_case.dart';
+import 'package:memorify/features/statistics/domain/use_cases/delete_rating_use_case.dart';
 import 'package:memorify/features/statistics/domain/use_cases/get_all_rating_use_case.dart';
 import 'package:memorify/router.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -50,5 +51,9 @@ void initDI() {
     ..registerFactory(
       () =>
           GetAllRatingUseCase(ratingRepository: getIt<RatingRepositoryImpl>()),
+    )
+    ..registerFactory(
+      () =>
+          DeleteRatingUseCase(ratingRepository: getIt<RatingRepositoryImpl>()),
     );
 }
