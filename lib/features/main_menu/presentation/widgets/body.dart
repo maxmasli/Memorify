@@ -31,7 +31,12 @@ class Body extends StatelessWidget {
             },
           ),
           const SizedBox(height: 24),
-          AppButtonWidget(text: AppStrings.statistic, onPressed: () {}),
+          AppButtonWidget(
+            text: AppStrings.statistic,
+            onPressed: () {
+              context.router.push(const StatisticRoute());
+            },
+          ),
           const SizedBox(height: 24),
           AppButtonWidget(
             text: AppStrings.tutorial,

@@ -7,6 +7,8 @@ abstract interface class RatingDataSource {
   Future<RatingModel> getRating();
 
   Future<void> saveRating(RatingModel model);
+
+  Future<List<RatingModel>> getAllRating();
 }
 
 class RatingDataSourceImpl implements RatingDataSource {
@@ -16,7 +18,7 @@ class RatingDataSourceImpl implements RatingDataSource {
 
     final lastIndex = box.values.length - 1;
     if (lastIndex == -1) {
-      getIt<Talker>().debug('No saved rating, returning 0');
+      getIt<Talker>().debug('No saved rating, return 0');
       return Future.value(const RatingModel(rating: 0));
     }
 
@@ -35,6 +37,14 @@ class RatingDataSourceImpl implements RatingDataSource {
     final box = await _openBox();
     await box.add(model);
     await box.close();
+  }
+
+  @override
+  Future<List<RatingModel>> getAllRating() async {
+    final box = await _openBox();
+    final ratingList = box.values.toList();
+    await box.close();
+    return Future.value(ratingList);
   }
 
   Future<Box<RatingModel>> _openBox() async {

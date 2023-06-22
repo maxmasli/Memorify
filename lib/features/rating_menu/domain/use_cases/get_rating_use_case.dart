@@ -11,7 +11,7 @@ final class GetRatingUseCase extends UseCase<RatingEntity, NoParams> {
   final GetRatingRepository ratingRepository;
 
   @override
-  Future<Either<Failure, RatingEntity>> call(NoParams params) {
+  Future<Either<Failure, RatingEntity>> call(NoParams params) async {
     return ratingRepository.getRating();
   }
 }
