@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/error_screen.dart';
-import 'package:memorify/core/presentation/widgets/exit_dialog_widget.dart';
+import 'package:memorify/core/presentation/widgets/ask_dialog_widget.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/di.dart';
 import 'package:memorify/features/memory_check/presentation/bloc/memory_check_bloc.dart';

@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/domain/entities/rating_entity.dart';
 import 'package:memorify/core/presentation/widgets/app_small_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/error_screen.dart';
-import 'package:memorify/core/presentation/widgets/exit_dialog_widget.dart';
+import 'package:memorify/core/presentation/widgets/ask_dialog_widget.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/statistics/presentation/bloc/statistics_bloc.dart';
 

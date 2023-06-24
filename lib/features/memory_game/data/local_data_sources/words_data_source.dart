@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:memorify/features/memory_game/data/models/word_model.dart';
 
 abstract interface class WordsDataSource {
@@ -6,24 +7,11 @@ abstract interface class WordsDataSource {
 
 class WordsDataSourceImpl implements WordsDataSource {
   @override
-  Future<List<WordModel>> getRandomWords(int count) {
-    //TODO load words from file mb
-    final words = [
-      const WordModel(word: 'asdsad'),
-      const WordModel(word: 'kal'),
-      const WordModel(word: 'loh'),
-      const WordModel(word: 'kal'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-      const WordModel(word: 'popsaod'),
-    ];
-    return Future.value(words.sublist(0, count));
+  Future<List<WordModel>> getRandomWords(int count) async {
+    final words = await rootBundle.loadString('assets/files/words-ru.txt');
+    final lines = words.split('\n')..shuffle();
+    final wordsList =
+        lines.sublist(0, count).map((e) => WordModel(word: e)).toList();
+    return Future.value(wordsList);
   }
 }

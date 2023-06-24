@@ -15,6 +15,7 @@ class TutorialScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(AppStrings.memorizationMethods),
           bottom: TabBar(
+            isScrollable: true,
             tabs: [
               Tab(
                 child: Text(AppStrings.introduction),
