@@ -14,9 +14,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        context.router
-          ..popUntilRoot()
-          ..push(const RatingMenuRoute());
+        context.router.popUntilRoot();
         return false;
       },
       child: BlocBuilder<ResultsBloc, ResultsState>(
@@ -48,7 +46,8 @@ class Body extends StatelessWidget {
                                   state.obtainedRating!.asCount(),
                             ),
                             Text(
-                              AppStrings.rating + state.rating!.rating.toString(),
+                              AppStrings.rating +
+                                  state.rating!.rating.toString(),
                             )
                           ],
                         ),
