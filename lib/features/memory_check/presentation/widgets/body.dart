@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
-import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/presentation/widgets/ask_dialog_widget.dart';
+import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/di.dart';
 import 'package:memorify/features/memory_check/presentation/bloc/memory_check_bloc.dart';
@@ -19,6 +19,16 @@ class Body extends StatelessWidget {
     return BlocBuilder<MemoryCheckBloc, MemoryCheckState>(
       builder: (context, state) {
         if (state is MemoryCheckLoaded) {
+          final textControllers = List.generate(
+            state.memoPropertiesEntity.wordsCount,
+            (index) => TextEditingController(),
+          );
+
+          final focusNodes = List.generate(
+            state.memoPropertiesEntity.wordsCount,
+            (index) => FocusNode(),
+          );
+
           return WillPopScope(
             onWillPop: () async {
               final isExit = await showDialog<bool>(
@@ -47,12 +57,19 @@ class Body extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.all(8),
                         child: TextField(
+                          controller: textControllers[index],
+                          focusNode: focusNodes[index],
+                          onSubmitted: (value) {
+                            if (index <
+                                state.memoPropertiesEntity.wordsCount - 1) {
+                              FocusScope.of(context)
+                                  .requestFocus(focusNodes[index + 1]);
+                            }
+                          },
                           onChanged: (s) =>
                               bloc.add(WordChangedEvent(index: index, word: s)),
-                          cursorColor: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .color,
+                          cursorColor:
+                              Theme.of(context).textTheme.bodyMedium!.color,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
