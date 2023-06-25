@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:memorify/core/domain/entities/memo_properties_entity.dart';
 import 'package:memorify/core/string/app_strings.dart';
+import 'package:memorify/core/utils/consts.dart';
 import 'package:memorify/di.dart';
 import 'package:memorify/router.dart';
 
@@ -52,7 +53,7 @@ class TrainingMenuBloc extends Bloc<TrainingMenuEvent, TrainingMenuState> {
     String? wordCountError;
     String? timeError;
     var hasError = false;
-    if (state.wordCount == 0) {
+    if (state.wordCount == 0 || state.wordCount > maxWordsCountValue) {
       wordCountError = AppStrings.wordCountError;
       hasError = true;
     }

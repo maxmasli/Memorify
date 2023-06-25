@@ -1,0 +1,1 @@
+const maxWordsCountValue = 190;

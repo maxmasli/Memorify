@@ -25,6 +25,7 @@ class Body extends StatelessWidget {
                 vertical: 10,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: double.infinity,
@@ -59,7 +60,7 @@ class Body extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
-                          ?.copyWith(fontSize: 20, color: AppColors.error),
+                          ?.copyWith(fontSize: 16, color: AppColors.error),
                     ),
                   if (state.timeError != null)
                     Text(
@@ -67,7 +68,7 @@ class Body extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
-                          ?.copyWith(fontSize: 20, color: AppColors.error)
+                          ?.copyWith(fontSize: 16, color: AppColors.error),
                     ),
                 ],
               ),

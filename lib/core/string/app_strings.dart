@@ -1,3 +1,5 @@
+import 'package:memorify/core/utils/consts.dart';
+
 abstract class AppStrings {
   //main_menu
   static String appName = 'Memorify';
@@ -50,7 +52,7 @@ abstract class AppStrings {
 
   //training_menu
   static String wordCountError =
-      'Кол-во слов не может быть пустым или равным 0';
+      'Кол-во слов не может быть пустым и должно быть в диапозоне от 1 до $maxWordsCountValue';
   static String timeError = 'Время не может быть пустым или равным 0';
 
   //stats
