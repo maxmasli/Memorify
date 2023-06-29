@@ -5,6 +5,7 @@ import 'package:memorify/core/presentation/widgets/app_button_widget.dart';
 import 'package:memorify/core/presentation/widgets/error_screen.dart';
 import 'package:memorify/core/string/app_strings.dart';
 import 'package:memorify/features/results/presentation/bloc/results_bloc.dart';
+import 'package:memorify/features/results/presentation/widgets/result_word_widget.dart';
 import 'package:memorify/router.dart';
 
 class Body extends StatelessWidget {
@@ -53,6 +54,19 @@ class Body extends StatelessWidget {
                         ),
                       ),
                   ],
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: ListView.builder(
+                      itemCount: state.resultWords.length,
+                      itemBuilder: (context, index) {
+                        return ResultWordWidget(
+                          resultWordEntity: state.resultWords[index],
+                        );
+                      },
+                    ),
+                  ),
                 ),
                 Column(
                   children: [

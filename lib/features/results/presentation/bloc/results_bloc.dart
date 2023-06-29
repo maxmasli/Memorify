@@ -8,6 +8,7 @@ import 'package:memorify/core/domain/entities/result_entity.dart';
 import 'package:memorify/core/domain/entities/word_entity.dart';
 import 'package:memorify/di.dart';
 import 'package:memorify/features/rating_menu/domain/use_cases/calculate_properties_use_case.dart';
+import 'package:memorify/features/results/domain/entity/result_word_entity.dart';
 import 'package:memorify/features/results/domain/use_cases/calculate_obtained_rating_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/compare_words_use_case.dart';
 import 'package:memorify/features/results/domain/use_cases/save_rating_use_case.dart';
@@ -31,6 +32,7 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
     Emitter<ResultsState> emit,
   ) async {
     emit(ResultsLoading());
+
     final resultEither = await compareWordUseCase(
       WordListCompareParam(
         a: event.wordsList,
@@ -58,6 +60,14 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
       (r) => obtainedRating = r,
     );
 
+    final resultWords = List.generate(
+      event.wordsList.length,
+      (index) => ResultWordEntity(
+        word: event.wordsList[index],
+        answerWord: event.answerWordsList[index],
+      ),
+    );
+
     if (event.memoPropertiesEntity.isRating) {
       assert(
         event.memoPropertiesEntity.ratingEntity != null,
@@ -80,6 +90,7 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
           memoPropertiesEntity: event.memoPropertiesEntity,
           resultEntity: resultEntity,
           rating: updatedRatingEntity,
+          resultWords: resultWords,
           obtainedRating: obtainedRating,
         ),
       );
@@ -88,6 +99,7 @@ class ResultsBloc extends Bloc<ResultsEvent, ResultsState> {
       emit(
         ResultsLoaded(
           memoPropertiesEntity: event.memoPropertiesEntity,
+          resultWords: resultWords,
           resultEntity: resultEntity,
         ),
       );

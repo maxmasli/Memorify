@@ -18,6 +18,7 @@ class ResultsLoaded extends ResultsState {
   const ResultsLoaded({
     required this.memoPropertiesEntity,
     required this.resultEntity,
+    required this.resultWords,
     this.obtainedRating,
     this.rating,
   });
@@ -26,11 +27,13 @@ class ResultsLoaded extends ResultsState {
   final ResultEntity resultEntity;
   final RatingEntity? obtainedRating;
   final RatingEntity? rating;
+  final List<ResultWordEntity> resultWords;
 
   @override
   List<Object?> get props => [
         memoPropertiesEntity,
         resultEntity,
+        resultWords,
         obtainedRating,
         rating,
       ];
